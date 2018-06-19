@@ -1,0 +1,27 @@
+{
+    "name": "telefone",
+    "version": "1.0.0",
+    "description": "Projeto Programação em Script - Professor Neto",
+    "main": "index.ejs",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/yuridpaula/telefones.git"
+    },
+    "author": "Yuri Oliveira de Paula",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/yuridpaula/telefones/issues"
+    },
+    "homepage": "https://github.com/yuridpaula/telefones#readme",
+    "dependencies": {
+        "body-parser": "^1.17.2",
+        "consign": "^0.1.6",
+        "ejs": "^2.5.7",
+        "express": "^4.15.4",
+        "express-validator": "^4.1.0",
+        "mysql": "^2.14.1"
+    }
+}

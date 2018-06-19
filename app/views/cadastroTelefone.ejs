@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+        Pessoas
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <link href="css/fonts.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <!-- CSS Files -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
+</head>
+
+<body class="">
+    <div class="wrapper ">
+        <div class="sidebar" data-color="white" data-active-color="primary">
+            <div class="logo">
+                <a href="#" class="simple-text logo-mini">
+                    <div class="logo-image-small">
+                        <img src="img/logo-small.png">
+                    </div>
+                </a>
+                <a href="#" class="simple-text logo-normal">
+                    Pessoas
+                </a>
+            </div>
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    <li class=" ">
+                        <a href="index">
+                            <i class="nc-icon nc-shop"></i>
+                            <p>Home</p>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a data-toggle="collapse" href="#collapseCadastro" class=" collapse collapsed" aria-expanded="true">
+                            <i class="nc-icon nc-badge"></i>
+                            <p>Cadastro</p>
+                        </a>
+                        <div class="collapse collapsed show" id="collapseCadastro">
+                            <ul class="nav">
+                                <li class=" nav-link">
+                                    <a href="cadastroPessoa">
+                                        <small>
+                                            <i class=" nc-icon nc-single-02"></i>
+                                            <p>Pessoa</p>
+                                        </small>
+                                    </a>
+                                </li>
+                                <li class="nav-link active">
+                                    <a href="cadastroTelefone">
+                                        <small>
+                                            <i class=" nc-icon nc-mobile"></i>
+                                            <p>Telefone</p>
+                                        </small>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a data-toggle="collapse" href="#collapseLista" class="collapsed">
+                            <i class="nc-icon nc-paper"></i>
+                            <p>Lista</p>
+                        </a>
+                        <div class="collapse" id="collapseLista">
+                            <ul class="nav">
+                                <li class="nav-link">
+                                    <a href="listaPessoas">
+                                        <small>
+                                            <i class=" nc-icon nc-single-02"></i>
+                                            <p>Pessoa</p>
+                                        </small>
+                                    </a>
+                                </li>
+                                <li class="nav-link">
+                                    <a href="listaTelefones">
+                                        <small>
+                                            <i class=" nc-icon nc-mobile"></i>
+                                            <p>Telefone</p>
+                                        </small>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+            <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <div class="navbar-toggle">
+                            <button type="button" class="navbar-toggler">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                        </div>
+                        <a class="navbar-brand" href="#">Telefones</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card card-user">
+                            <div class="card-header">
+                                <h5 class="card-title">Cadastro de Telefone</h5>
+                            </div>
+                            <div class="card-body">
+                                <form action="cadastroTelefone" method="POST">
+                                    <div class="row">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <label>Pessoa</label>
+                                                <select class="custom-select form-control" id="inlineFormCustomSelect" name="pes_codigo" required>
+                                                    <%
+                                                        for ( var i = 0; i < pessoas.length; i++ ){
+                                                            var selected = ( pessoas[i].pes_codigo == data[0].pes_codigo ) ? "selected" : "";                                                           
+                                                    %>
+                                                        <option value="<%=pessoas[i].pes_codigo %>" <%=selected %>> <%= pessoas[i].pes_nome %> (<%=pessoas[i].pes_apelido %>) </option>
+                                                    <%  } %>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label>Tipo</label>
+                                                <input type="text" class="form-control" placeholder="Tipo" value="<%= data[0].tel_tipo%>" name="tel_tipo" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label>Marca</label>
+                                                <input type="text" class="form-control" placeholder="Marca" value="<%= data[0].tel_marca%>" name="tel_marca" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1"> </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Numero</label>
+                                                <input type="text" class="form-control" placeholder="Numero" id="tel_numero" value="<%= data[0].tel_numero%>" name="tel_numero" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Operadora</label>
+                                                <input type="number" class="form-control" placeholder="Operadora" value="<%= data[0].tel_operadora%>" name="tel_operadora" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="update ml-auto mr-auto">
+                                            <input type="hidden" name="tel_codigo" value="<%= data[0].tel_codigo%>">
+                                            <button type="submit" class="btn btn-primary btn-round">Salvar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer footer-black  footer-white ">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="credits ml-auto">
+                            <span class="copyright">
+                                ©
+                                <script>
+                                document.write(new Date().getFullYear())
+                                </script>, Yuri Oliveira de Paula
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="js/core/jquery.min.js"></script>
+    <script src="js/core/jquery.mask.min.js"></script>
+    <script src="js/core/popper.min.js"></script>
+    <script src="js/core/bootstrap.min.js"></script>
+    <script src="js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <script src="js/plugins/bootstrap-notify.js"></script>
+    <script src="js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            $('#tel_numero').mask('(00) 0000-00009');
+        })
+    </script>
+
+</body>
+
+</html>7
